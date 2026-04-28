@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ethical Image Caption Generator</title>
+    <style>
+        body { font-family: Arial; background:#f5f5f5; padding:20px; }
+        .box { background:#fff; padding:20px; border-radius:8px; margin-bottom:20px; }
+        input[type="file"] { width:100%; padding:8px; margin-bottom:10px; }
+        button { background:#007bff; color:white; padding:10px 20px; border:none; border-radius:4px; cursor:pointer; }
+        button:hover { background:#0056b3; }
+        pre { background:#e8f5e8; padding:15px; border-radius:4px; border-left:4px solid #28a745; }
+        .nav { margin-bottom:20px; }
+        .nav a { margin-right:15px; text-decoration:none; color:#007bff; font-weight:bold; }
+        .nav a:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">📝 Text Detector</a>
+        <a href="/url">🔗 URL Detector</a>
+        <a href="/image">🖼️ Image Detector</a>
+        <a href="/content-analysis">🛡️ Content Analysis</a>
+        <a href="/text-sanitization">🧹 Text Sanitization</a>
+        <a href="/caption">📝 Caption Generator</a>
+    </div>
+    
+    <div class="box">
+        <h2>Ethical Image Caption Recommendation Engine</h2>
+        <p>Upload an image to generate an ethical, socially responsible caption suitable for social media.</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="caption_image" accept="image/*" required><br><br>
+            <button type="submit">Generate Caption</button>
+        </form>
+
+        {% if result %}
+        <h3>Generated Caption</h3>
+        <pre style="white-space: pre-wrap; word-wrap: break-word; max-width: 100%;">{{ result }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>

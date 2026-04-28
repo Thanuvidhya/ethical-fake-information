@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Fake Information Detector</title>
+    <style>
+        body { font-family: Arial; background:#f5f5f5; padding:20px; }
+        .box { background:#fff; padding:20px; border-radius:8px; margin-bottom:20px; }
+        input[type="url"] { width:100%; padding:8px; margin-bottom:10px; }
+        button { background:#007bff; color:white; padding:10px 20px; border:none; border-radius:4px; cursor:pointer; }
+        button:hover { background:#0056b3; }
+        pre { background:#eee; padding:10px; }
+        .nav { margin-bottom:20px; }
+        .nav a { margin-right:15px; text-decoration:none; color:#007bff; font-weight:bold; }
+        .nav a:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">📝 Text Detector</a>
+        <a href="/url">🔗 URL Detector</a>
+        <a href="/image">🖼️ Image Detector</a>
+        <a href="/content-analysis">🛡️ Content Analysis</a>
+        <a href="/text-sanitization">🧹 Text Sanitization</a>
+        <a href="/caption">📝 Caption Generator</a>
+    </div>
+    
+    <div class="box">
+        <h2>URL Fake Information Detector</h2>
+        <p>Enter a news URL to analyze its content for fake information.</p>
+        
+        <form method="post">
+            <input type="url" name="url" placeholder="Enter news URL here" required><br><br>
+            <button type="submit">Analyze URL</button>
+        </form>
+
+        {% if result %}
+        <h3>Analysis Result</h3>
+        <pre style="white-space: pre-wrap; word-wrap: break-word; max-width: 100%;">{{ result }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>

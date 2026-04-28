@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Fake Information Detector</title>
+    <style>
+        body { font-family: Arial; background:#f5f5f5; padding:20px; }
+        .box { background:#fff; padding:20px; border-radius:8px; margin-bottom:20px; }
+        input[type="file"] { width:100%; padding:8px; margin-bottom:10px; }
+        button { background:#007bff; color:white; padding:10px 20px; border:none; border-radius:4px; cursor:pointer; }
+        button:hover { background:#0056b3; }
+        pre { background:#eee; padding:10px; }
+        .nav { margin-bottom:20px; }
+        .nav a { margin-right:15px; text-decoration:none; color:#007bff; font-weight:bold; }
+        .nav a:hover { text-decoration:underline; }
+        .uploaded-image { max-width: 100%; max-height: 300px; margin: 10px 0; border: 2px solid #007bff; border-radius: 8px; }
+        .upload-success { color: #28a745; font-weight: bold; margin: 10px 0; }
+        .image-preview { text-align: center; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">📝 Text Detector</a>
+        <a href="/url">🔗 URL Detector</a>
+        <a href="/image">🖼️ Image Detector</a>
+        <a href="/content-analysis">🛡️ Content Analysis</a>
+        <a href="/text-sanitization">🧹 Text Sanitization</a>
+        <a href="/caption">📝 Caption Generator</a>
+    </div>
+    
+    <div class="box">
+        <h2>Image Fake Information Detector</h2>
+        <p>Upload an image containing text to analyze for fake information using OCR.</p>
+        
+        <form method="post" enctype="multipart/form-data" id="imageForm">
+            <input type="file" name="image" accept="image/*" id="imageInput" required><br><br>
+            <button type="submit">Analyze Image</button>
+        </form>
+
+        {% if uploaded_image %}
+        <div class="upload-success">✅ Image uploaded successfully!</div>
+        <div class="image-preview">
+            <h4>Uploaded Image:</h4>
+            <img src="{{ uploaded_image }}" alt="Uploaded image" class="uploaded-image">
+        </div>
+        {% endif %}
+
+        {% if extracted %}
+        <h3>Extracted Text from Image</h3>
+        <pre>{{ extracted }}</pre>
+        {% endif %}
+
+        {% if result %}
+        <h3>Analysis Result</h3>
+        <pre style="white-space: pre-wrap; word-wrap: break-word; max-width: 100%;">{{ result }}</pre>
+        {% endif %}
+    </div>
+
+    <script>
+        // Show image preview immediately after selection
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // You can add immediate preview here if needed
+                    console.log('Image selected for upload');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
