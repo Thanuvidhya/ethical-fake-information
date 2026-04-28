@@ -1,0 +1,16 @@
+# Netlify configuration for a Python/Flask app.
+# Note: Netlify cannot run Flask as a traditional server directly.
+# This config expects a Netlify Function wrapper such as `app` in `netlify/functions`.
+
+[build]
+  command = "pip install -r requirements.txt"
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/app"
+  status = 200
+  force = true
